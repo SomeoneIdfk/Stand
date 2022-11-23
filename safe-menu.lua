@@ -308,6 +308,18 @@ function safe_menu.get_main_view_position_and_size()
     return succes and output or nil
 end
 
+function safe_menu.get_current_ui_list()
+    local succes, output = pcall(menu.get_current_ui_list)
+    if not succes then util.log("Error; "..output.." in get_current_ui_list.") end
+    return succes and output or nil
+end
+
+function safe_menu.get_current_menu_list()
+    local succes, output = pcall(menu.get_current_menu_list)
+    if not succes then util.log("Error; "..output.." in get_current_menu_list.") end
+    return succes and output or nil
+end
+
 function safe_menu.get_active_list_cursor_text(even_when_disabled, even_when_inappropriate)
     local succes, output = pcall(menu.get_active_list_cursor_text, even_when_disabled, even_when_inappropriate)
     if not succes then util.log("Error; "..output.." in get_active_list_cursor_text.") end
