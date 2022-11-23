@@ -552,4 +552,10 @@ function safe_menu.get_edition()
     return succes and output or nil
 end
 
+function safe_menu.get_version()
+    local succes, output = pcall(menu.get_version)
+    if not succes then util.log("Error; "..output.." in get_version.") end
+    return succes and output or nil
+end
+
 return safe_menu
