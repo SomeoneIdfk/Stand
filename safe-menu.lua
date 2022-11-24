@@ -70,91 +70,91 @@ function safe_menu.ref_by_command_name(command_name)
 end
 
 function safe_menu.list(parent, menu_name, command_names, help_text, on_click, on_back)
-    command_names, on_click, on_back = command_names or {""}, on_click or functions.empty, on_back or functions.empty
+    command_names, help_text, on_click, on_back = command_names or {""}, help_text or "", on_click or functions.empty, on_back or functions.empty
     local succes, output = pcall(menu.list, parent, menu_name, command_names, help_text, on_click, on_back)
     if not succes then util.log("Error; "..output.." in list.") end
     return succes and output or nil
 end
 
 function safe_menu.action(parent, menu_name, command_names, help_text, on_click, on_command, syntax, perm)
-    command_names, on_click, on_command, perm = command_names or {""}, on_click or functions.empty, on_command or functions.empty, perm or COMMANDPERM_USERONLY
+    command_names, help_text, on_click, on_command, perm = command_names or {""}, help_text or "", on_click or functions.empty, on_command or functions.empty, perm or COMMANDPERM_USERONLY
     local succes, output = pcall(menu.action, parent, menu_name, command_names, help_text, on_click, on_command, syntax, perm)
     if not succes then util.log("Error; "..output.." in action.") end
     return succes and output or nil
 end
 
 function safe_menu.toggle(parent, menu_name, command_names, help_text, on_change, default_on)
-    command_names, on_change = command_names or {""}, on_change or functions.empty
+    command_names, help_text, on_change = command_names or {""}, help_text or "", on_change or functions.empty
     local succes, output = pcall(menu.toggle, parent, menu_name, command_names, help_text, on_change, default_on)
     if not succes then util.log("Error; "..output.." in toggle.") end
     return succes and output or nil
 end
 
 function safe_menu.toggle_loop(parent, menu_name, command_names, help_text, on_tick, on_stop)
-    command_names, on_tick, on_stop = command_names or {""}, on_tick or functions.empty, on_stop or functions.empty
+    command_names, help_text, on_tick, on_stop = command_names or {""}, help_text or "", on_tick or functions.empty, on_stop or functions.empty
     local succes, output = pcall(menu.toggle_loop, parent, menu_name, command_names, help_text, on_tick, on_stop)
     if not succes then util.log("Error; "..output.." in toggle_loop.") end
     return succes and output or nil
 end
 
 function safe_menu.slider(parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_change)
-    command_names, on_change = command_names or {""}, on_change or functions.empty
+    command_names, help_text, on_change = command_names or {""}, help_text or "", on_change or functions.empty
     local succes, output = pcall(menu.slider, parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_change)
     if not succes then util.log("Error; "..output.." in slider.") end
     return succes and output or nil
 end
 
 function safe_menu.slider_float(parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_change)
-    command_names, on_change = command_names or {""}, on_change or functions.empty
+    command_names, help_text, on_change = command_names or {""}, help_text or "", on_change or functions.empty
     local succes, output = pcall(menu.slider_float, parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_change)
     if not succes then util.log("Error; "..output.." in slider_float.") end
     return succes and output or nil
 end
 
 function safe_menu.click_slider(parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_click)
-    command_names, on_click = command_names or {""}, on_click or functions.empty
+    command_names, help_text, on_click = command_names or {""}, help_text or "", on_click or functions.empty
     local succes, output = pcall(menu.click_slider, parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_click)
     if not succes then util.log("Error; "..output.." in click_slider.") end
     return succes and output or nil
 end
 
 function safe_menu.click_slider_float(parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_click)
-    command_names, on_click = command_names or {""}, on_click or functions.empty
+    command_names, help_text, on_click = command_names or {""}, help_text or "", on_click or functions.empty
     local succes, output = pcall(menu.click_slider_float, parent, menu_name, command_names, help_text, min_value, max_value, default_value, step_size, on_click)
     if not succes then util.log("Error; "..output.." in click_slider_float.") end
     return succes and output or nil
 end
 
 function safe_menu.list_select(parent, menu_name, command_names, help_text, options, default_value, on_change)
-    command_names, options, on_change = command_names or {""}, options or {""}, on_change or functions.empty
+    command_names, help_text, options, on_change = command_names or {""}, help_text or "", options or {""}, on_change or functions.empty
     local succes, output = pcall(menu.list_select, parent, menu_name, command_names, help_text, options, default_value, on_change)
     if not succes then util.log("Error; "..output.." in list_select.") end
     return succes and output or nil
 end
 
 function safe_menu.list_action(parent, menu_name, command_names, help_text, options, on_item_click)
-    command_names, options, on_item_click = command_names or {""}, options or {""}, on_item_click or functions.empty
+    command_names, help_text, options, on_item_click = command_names or {""}, help_text or "", options or {""}, on_item_click or functions.empty
     local succes, output = pcall(menu.list_action, parent, menu_name, command_names, help_text, options, on_item_click)
     if not succes then util.log("Error; "..output.." in list_action.") end
     return succes and output or nil
 end
 
 function safe_menu.text_input(parent, menu_name, command_names, help_text, on_change, default_value)
-    command_names, on_change, default_value = command_names or {""}, on_change or functions.empty, default_value or ""
+    command_names, help_text, on_change, default_value = command_names or {""}, help_text or "", on_change or functions.empty, default_value or ""
     local succes, output = pcall(menu.text_input, parent, menu_name, command_names, help_text, on_change, default_value)
     if not succes then util.log("Error; "..output.." in text_input.") end
     return succes and output or nil
 end
 
 function safe_menu.colour(parent, menu_name, command_names, help_text, default, transparency, on_change)
-    command_names, default, on_change = command_names or {""}, default or nil, on_change or functions.empty
+    command_names, help_text, default, on_change = command_names or {""}, help_text or "", default or nil, on_change or functions.empty
     local succes, output = pcall(menu.colour, parent, menu_name, command_names, help_text, default, transparency, on_change)
     if not succes then util.log("Error; "..output.." in colour.") end
     return succes and output or nil
 end
 
 function safe_menu.colour_rbga(parent, menu_name, command_names, help_text, default_r, default_g, default_b, default_a, on_change)
-    command_names, default_r, default_g, default_b, default_a, on_change = command_names or {""}, default_r or 1, default_g or 1, default_b or 1, default_a or 1, on_change or functions.empty
+    command_names, help_text, default_r, default_g, default_b, default_a, on_change = command_names or {""}, help_text or "", default_r or 1, default_g or 1, default_b or 1, default_a or 1, on_change or functions.empty
     local succes, output = pcall(menu.colour, parent, menu_name, command_names, help_text, default_r, default_g, default_b, default_a, on_change)
     if not succes then util.log("Error; "..output.." in colour_rbga.") end
     return succes and output or nil
@@ -187,14 +187,14 @@ function safe_menu.hyperlink(parent, menu_name, link, help_text)
 end
 
 function safe_menu.action_slider(parent, menu_name, command_names, help_text, options, on_click)
-    command_names, options, on_click = command_names or {""}, options or {""}, on_click or functions.empty
+    command_names, help_text, options, on_click = command_names or {""}, help_text or "", options or {""}, on_click or functions.empty
     local succes, output = pcall(menu.action_slider, parent, menu_name, command_names, help_text, options, on_click)
     if not succes then util.log("Error; "..output.." in action_slider.") end
     return succes and output or nil
 end
 
 function safe_menu.slider_text(parent, menu_name, command_names, help_text, options, on_click)
-    command_names, options, on_click = command_names or {""}, options or {""}, on_click or functions.empty
+    command_names, help_text, options, on_click = command_names or {""}, help_text or "", options or {""}, on_click or functions.empty
     local succes, output = pcall(menu.slider_text, parent, menu_name, command_names, help_text, options, on_click)
     if not succes then util.log("Error; "..output.." in slider_text.") end
     return succes and output or nil
