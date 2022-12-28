@@ -69,9 +69,9 @@ function safe_menu.ref_by_command_name(command_name)
     return succes and output:isValid() and output or nil
 end
 
-function safe_menu.list(parent, menu_name, command_names, help_text, on_click, on_back)
-    command_names, help_text, on_click, on_back = command_names or {""}, help_text or "", on_click or functions.empty, on_back or functions.empty
-    local succes, output = pcall(menu.list, parent, menu_name, command_names, help_text, on_click, on_back)
+function safe_menu.list(parent, menu_name, command_names, help_text, on_click, on_back, on_active_list_update)
+    command_names, help_text, on_click, on_back, on_active_list_update = command_names or {""}, help_text or "", on_click or functions.empty, on_back or functions.empty, on_active_list_update or functions.empty
+    local succes, output = pcall(menu.list, parent, menu_name, command_names, help_text, on_click, on_back, on_active_list_update)
     if not succes then util.log("Error; "..output.." in list.") end
     return succes and output or nil
 end
@@ -465,6 +465,12 @@ function safe_menu.get_default_state(command)
     return succes and output or nil
 end
 
+function safe_menu.apply_default_state(command)
+    local succes, output = pcall(menu.apply_default_state, command)
+    if not succes then util.log("Error; "..output.." in apply_default_state.") end
+    return succes and output or nil
+end
+
 function safe_menu.set_menu_name(command, menu_name)
     local succes, output = pcall(menu.set_menu_name, command, menu_name)
     if not succes then util.log("Error; "..output.." in set_menu_name.") end
@@ -530,6 +536,12 @@ function safe_menu.set_action_slider_options(command, options)
     options = options or {""}
     local succes, output = pcall(menu.set_action_slider_options, command, options)
     if not succes then util.log("Error; "..output.." in set_action_slider_options.") end
+    return succes and output or nil
+end
+
+function safe_menu.set_temporary(command)
+    local succes, output = pcall(menu.set_temporary, command)
+    if not succes then util.log("Error; "..output.." in set_temporary.") end
     return succes and output or nil
 end
 
